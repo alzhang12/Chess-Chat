@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+export NODE_PATH=/Users/weizhenzhang/Desktop/src/personal/private-chat/env/lib/node_modules
+export NPM_CONFIG_PREFIX=/Users/weizhenzhang/Desktop/src/personal/private-chat/env
+export npm_config_prefix=/Users/weizhenzhang/Desktop/src/personal/private-chat/env
+exec /Users/weizhenzhang/Desktop/src/personal/private-chat/env/bin/node "$@"
