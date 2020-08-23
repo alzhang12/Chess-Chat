@@ -3,14 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Chat App</title>
+    <link rel="stylesheet" href="/static/style.css">
   </head>
   <body>
-    <h1>hello world</h1>
-    <form action="/" method="post">
-      <input type="text" name="username" value="username">
-      <input type="password" name="password" value="password">
-      <input type="submit" name="submit" value="submit">
-    </form>
+    <div class="home-page-container">
+      <h1>Chess Chat</h1>
+
+      <div class="form-container">
+        <form action="/" method="post">
+          <div class="input-container">
+            <input type="text" name="username" id="username" value="username" placeholder="username">
+          </div>
+          <div class="input-container" id="password-container">
+            <input type="password" name="password" id="password" value="password" placeholder="password">
+          </div>
+
+          <div class="login-container">
+            <input type="submit" name="login" value="login">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="sign-up-link">
+      <p>Don't have an account? <a href="/">Sign Up</a></p>
+    </div>
 
     <div id="root"></div>
     <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>

@@ -1,0 +1,46 @@
+/* Whole Page */
+.home-page-container {
+  width: 400px;
+  margin: 0 auto;
+  border: 1.25px solid lightgrey;
+  padding-bottom: 30px;
+}
+
+/* Title */
+h1 {
+  text-align: center;
+}
+
+/* Form Container */
+.form-container {
+  width: 95%;
+  margin: 0 auto;
+}
+.form-container div {
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Inputs */
+.input-container input {
+  width: 90%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 2.5px;
+}
+
+/* Submit */
+.login-container input {
+  width: 97%;
+  margin-top: 17.5px;
+  padding: 5px;
+}
+
+.sign-up-link {
+  width: 400px;
+  margin: 0 auto;
+  border: 1.25px solid lightgrey;
+  margin-top: 10px;
+  text-align: center;
+}
