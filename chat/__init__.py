@@ -1,6 +1,7 @@
 """Chat package initializer."""
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 from flask_heroku import Heroku
 
@@ -8,13 +9,14 @@ from flask_heroku import Heroku
 app = Flask(__name__)
 
 # configuration
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/users'
-heroku = Heroku(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/users'
+#heroku = Heroku(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = b'S\xf4\xc2uZ\xa3\xaf\xef\x8c*BbU\xdc\x05\xa7h\x8c\x86\x9d\x89]\xc5 '
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 # database model
 class User(db.Model):
