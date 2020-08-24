@@ -8,18 +8,19 @@ from flask_heroku import Heroku
 app = Flask(__name__)
 
 # configuration
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/users'
-heroku = Heroku(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/users'
+#heroku = Heroku(app)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = b'S\xf4\xc2uZ\xa3\xaf\xef\x8c*BbU\xdc\x05\xa7h\x8c\x86\x9d\x89]\xc5 '
+
 db = SQLAlchemy(app)
 
-# table
+# database model
 class User(db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'users_table'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(), unique=True)
-    password = db.Column(db.String(), unique=True)
+    password = db.Column(db.String())
 
     def __init__(self, username, password):
         """Enter a new user."""
