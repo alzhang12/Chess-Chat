@@ -3,9 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="/static/style.css">
   </head>
   <body>
     <div class="home-page-container">
+      {% if status == "bad username" %}
+        <p style="color: red;">username already exists</p>
+      {% elif status == "bad password" %}
+        <p style="color: red;">passwords do not match</p>
+      {% endif %}
+      
       <div class="form-container">
         <form action="/register/" method="post">
           <div class="input-container">
