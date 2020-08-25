@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Search from './search';
 
 ReactDOM.render(
-    <p>React Works!</p>,
-    document.getElementById('root'),
+    <Search />,
+    document.getElementById('reactEntry-Search'),
 );

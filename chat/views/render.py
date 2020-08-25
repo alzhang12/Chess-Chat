@@ -35,7 +35,8 @@ def show_index():
         return flask.render_template("index.html", **context)
     else:
         # display home page for user (idk what this looks like yet)
-        return flask.redirect(flask.url_for('show_chat', other_user=flask.session['logged_in_user']))
+        return flask.redirect(flask.url_for('show_profile',
+                                            user_id=flask.session['logged_in_user']))
 
 
 """ ------------------------------------------------------------------------ """
@@ -81,7 +82,7 @@ def sign_up():
 """ ------------------------------------------------------------------------ """
 """ --------------------------- Profile Page ------------------------------- """
 """ ------------------------------------------------------------------------ """
-@chat.app.route('/<user_id>/', methods=["GET"])
+@chat.app.route('/profile/<user_id>/', methods=["GET"])
 def show_profile(user_id):
     """Render profile page."""
     if 'logged_in_user' not in flask.session:
@@ -107,7 +108,7 @@ def show_chat(other_user):
 
     # REACT Page
     context = {
-        "log_username": flask.session['logged_in_user']
+        "logged_in_user": flask.session['logged_in_user']
     }
 
     return flask.render_template("chat.html", **context)
