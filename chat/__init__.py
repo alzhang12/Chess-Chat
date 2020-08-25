@@ -34,6 +34,23 @@ class User(db.Model):
         """Representation."""
         return '<id %r>' % self.id
 
+class Message(db.Model):
+    __tablename__ = 'messages_table'
+    id = db.Column(db.Integer, primary_key=True)
+    owner = db.Column(db.String())
+    recipient = db.Column(db.String())
+    content = db.Column(db.String())
+
+    def __init__(self, owner, recipient, content):
+        """Enter a new message."""
+        self.owner = owner
+        self.recipient = recipient
+        self.content = content
+
+    def __repr__(self):
+        """Representation."""
+        return '<id %r>' % self.id
+
 # circular imports!
 import chat.api
 import chat.views

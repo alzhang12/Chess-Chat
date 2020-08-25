@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# stop on errors
+set -Eeuo pipefail
+set -x
+
+# update migration directory
+flask db migrate
+
+# push to git
+git add .
+git commit -m "auto commit"
+git push
+
+# push to heroku
+git push heroku master
+
+# update schema
+heroku run flask db upgrade

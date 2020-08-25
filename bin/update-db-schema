@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# stop on errors
+set -Eeuo pipefail
+set -x
+
+# update db schema
+flask db migrate
+flask db upgrade
