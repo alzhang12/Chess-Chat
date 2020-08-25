@@ -3,6 +3,9 @@ import flask
 import pathlib
 import chat
 
+""" ------------------------------------------------------------------------ """
+""" ------------------------ Main (Login) Page ----------------------------- """
+""" ------------------------------------------------------------------------ """
 @chat.app.route('/', methods=['GET', 'POST'])
 def show_index():
     """Render main page."""
@@ -26,15 +29,18 @@ def show_index():
     
             # start user session
             flask.session['logged_in_user'] = username
-            return flask.redirect(flask.url_for('show_chat'))
+            return flask.redirect(flask.url_for('show_profile', user_id=username))
         
         context = {}
         return flask.render_template("index.html", **context)
     else:
         # display home page for user (idk what this looks like yet)
-        return flask.redirect(flask.url_for('show_chat'))
+        return flask.redirect(flask.url_for('show_chat', other_user=flask.session['logged_in_user']))
 
 
+""" ------------------------------------------------------------------------ """
+""" -------------------------- Register Page ------------------------------- """
+""" ------------------------------------------------------------------------ """
 @chat.app.route('/register/', methods=['GET', 'POST'])
 def sign_up():
     """Sign up page."""
@@ -72,12 +78,34 @@ def sign_up():
     return flask.render_template("register.html", **context)
 
 
-@chat.app.route('/chat/', methods=["GET"])
-def show_chat():
+""" ------------------------------------------------------------------------ """
+""" --------------------------- Profile Page ------------------------------- """
+""" ------------------------------------------------------------------------ """
+@chat.app.route('/<user_id>/', methods=["GET"])
+def show_profile(user_id):
+    """Render profile page."""
+    if 'logged_in_user' not in flask.session:
+        return flask.redirect('show_index')
+
+    # not logged in user's page
+    if user_id != flask.session['logged_in_user']:
+        flask.abort(403)
+
+    # REACT Page
+    context = {}
+    return flask.render_template("profile.html", **context)
+
+
+""" ------------------------------------------------------------------------ """
+""" ---------------------------- Chat Page --------------------------------- """
+""" ------------------------------------------------------------------------ """
+@chat.app.route('/chat/<other_user>/', methods=["GET"])
+def show_chat(other_user):
     """Render chat page."""
     if 'logged_in_user' not in flask.session:
         flask.abort(404)
 
+    # REACT Page
     context = {
         "log_username": flask.session['logged_in_user']
     }
@@ -85,6 +113,32 @@ def show_chat():
     return flask.render_template("chat.html", **context)
 
 
+""" ------------------------------------------------------------------------ """
+""" --------------------------- Search Page -------------------------------- """
+""" ------------------------------------------------------------------------ """
+@chat.app.route('/search/', methods=["GET"])
+def search():
+    """Render search page."""
+    if 'logged_in_user' not in flask.session:
+        flask.redirect(flask.url_for('show_index'))
+
+    # REACT Page
+    context = {}
+    return flask.render_template("search.html", **context)
+
+
+""" ------------------------------------------------------------------------ """
+""" --------------------------- Logout Page -------------------------------- """
+""" ------------------------------------------------------------------------ """
 @chat.app.route('/logout/', methods=["GET", "POST"])
 def logout():
     """Handle logout."""
+    if 'logged_in_user' not in flask.session:
+        return flask.redirect(flask.url_for('show_index'))
+    
+    if flask.request.method == "POST":
+        flask.session.pop('logged_in_user', None)
+        return flask.redirect(flask.url_for('show_index'))
+
+    context = {}
+    return flask.render_template("logout.html", **context)
