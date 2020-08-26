@@ -40,6 +40,7 @@ class Message(db.Model):
     owner = db.Column(db.String())
     recipient = db.Column(db.String())
     content = db.Column(db.String())
+    time_created = db.Column(db.DateTime(timezone=True), server_default=db.text('NOW()'))
 
     def __init__(self, owner, recipient, content):
         """Enter a new message."""
