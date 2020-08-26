@@ -2,10 +2,13 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './chat/js/main.jsx',
+  entry: {
+    chat: './chat/js/chat-main.jsx',
+    search: './chat/js/main.jsx',
+  },
   output: {
     path: path.join(__dirname, '/chat/static/js/'),
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   module: {
     rules: [
