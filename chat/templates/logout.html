@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Logout</title>
+    <link rel="stylesheet" href="/static/style.css">
   </head>
   <body>
     <div class="navbar">
@@ -11,10 +12,12 @@
       </div>
 
       <div class="profile">
-        <a href="/{{ logged_in_user }}/">{{ logged_in_user }}</a>
+        <div class="profile-link">
+          <a href="/profile/{{ logged_in_user }}/"><p>{{ logged_in_user }}</p></a>
+        </div>
       </div>
     </div>
-    
+
     <form action="/logout/" method="post">
       <input type="submit" name="Logout" value="Logout">
     </form>

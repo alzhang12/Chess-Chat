@@ -93,7 +93,9 @@ def show_profile(user_id):
         flask.abort(403)
 
     # REACT Page
-    context = {}
+    context = {
+        "logged_in_user": flask.session['logged_in_user']
+    }
     return flask.render_template("profile.html", **context)
 
 

@@ -1,3 +1,8 @@
+/* body */
+body {
+  margin-top: 0;
+}
+
 /* Navbar */
 .navbar {
   width: 100%;
@@ -53,4 +58,31 @@ h1 {
   border: 1.25px solid lightgrey;
   margin-top: 10px;
   text-align: center;
+}
+
+/* Profile */
+.navbar div {
+  height: 100%;
+}
+.navbar h2 {
+  margin: 0;
+}
+.navbar p {
+  margin: 0;
+}
+.profile {
+  width: 20%;
+  float:left;
+}
+.profile-link {
+  clear: left;
+  float: right;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  width: 80%;
+  float: left;
+  display: flex;
+  align-items: center;
 }
