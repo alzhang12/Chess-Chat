@@ -4,34 +4,39 @@
     <meta charset="utf-8">
     <title>Chat App</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@200&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="navbar">
-      <div class="logo">
-        <h2>Chess Chat</h2>
+    <div class="body-container">
+      <div class="navbar">
+        <div class="logo">
+          <h2>Chess Chat</h2>
+        </div>
       </div>
-    </div>
 
-    <div class="home-page-container">
-      <h1>Chess Chat</h1>
+      <div class="main-container">
+        <div class="home-page-container">
+          <h1>Chess Chat</h1>
 
-      <div class="form-container">
-        <form action="/" method="post">
-          <div class="input-container">
-            <input type="text" name="username" id="username" value="username" placeholder="username">
-          </div>
-          <div class="input-container" id="password-container">
-            <input type="password" name="password" id="password" value="password" placeholder="password">
-          </div>
+          <div class="form-container">
+            <form action="/" method="post">
+              <div class="input-container">
+                <input type="text" name="username" id="username" value="username" placeholder="username">
+              </div>
+              <div class="input-container" id="password-container">
+                <input type="password" name="password" id="password" value="password" placeholder="password">
+              </div>
 
-          <div class="login-container">
-            <input type="submit" name="login" value="login">
+              <div class="login-container">
+                <input type="submit" name="login" value="login">
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
+        <div class="sign-up-link">
+          <p>Don't have an account? <a href="/register/">Sign Up</a></p>
+        </div>
       </div>
-    </div>
-    <div class="sign-up-link">
-      <p>Don't have an account? <a href="/register/">Sign Up</a></p>
     </div>
   </body>
 </html>

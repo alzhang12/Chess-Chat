@@ -1,6 +1,19 @@
 /* body */
 body {
-  margin-top: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  font-family: 'Rokkitt', serif;
+}
+.body-container {
+  height: 130vh;
+  width: 100vw;
+  background-image: url("/static/home-page-pic.jpg");
+  background-size: cover;
+}
+input {
+  font-family: 'Rokkitt', serif;
+  font-size: 110%;
 }
 
 /* Navbar */
@@ -8,6 +21,7 @@ body {
   width: 100%;
   height: 50px;
   border-bottom: 1.5px solid lightgrey;
+  background-color: white;
 }
 .profile {
   float: right;
@@ -18,7 +32,18 @@ body {
   width: 400px;
   margin: 0 auto;
   border: 1.25px solid lightgrey;
-  padding-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  background-color: white;
+}
+.main-container {
+  height: 90vh;
+  /* background-image: url("/static/home-page-pic.jpg");
+  background-size: cover; */
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-18%);
 }
 
 /* Title */
@@ -30,6 +55,7 @@ h1 {
 .form-container {
   width: 95%;
   margin: 0 auto;
+  background-color: white;
 }
 .form-container div {
   width: 90%;
@@ -58,6 +84,7 @@ h1 {
   border: 1.25px solid lightgrey;
   margin-top: 10px;
   text-align: center;
+  background-color: white;
 }
 
 /* Profile */
@@ -66,9 +93,11 @@ h1 {
 }
 .navbar h2 {
   margin: 0;
+  margin-left: 10px;
 }
 .navbar p {
   margin: 0;
+  margin-right: 10px;
 }
 .profile {
   width: 20%;
