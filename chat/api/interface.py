@@ -70,7 +70,6 @@ def get_messages():
     other_user = flask.request.args.get("recipient")
     num_messages = flask.request.args.get("quantity", default=10, type=int)
 
-    print("Logged in User: " + cur_user)
     # make db query
     sent_messages = chat.Message.query.filter_by(owner=cur_user, recipient=other_user).all()
     received_messages = chat.Message.query.filter_by(owner=other_user, recipient=cur_user).all()
@@ -100,3 +99,29 @@ def get_messages():
     }
     return flask.jsonify(**context)
 
+
+@chat.app.route('/api/v1/friends/', methods=["GET"])
+def get_friends():
+    """Return list of friends."""
+    if 'logged_in_user' not in flask.session:
+        abort(404)
+    
+    # get all messages with user
+    user = flask.session['logged_in_user']
+    s_messages = chat.Message.query.filter_by(owner=user).all()
+    r_messages = chat.Message.query.filter_by(recipient=user).all()
+    messages = s_messages + r_messages
+
+    # get all unique people in the list
+    friends = []
+    for message in messages:
+        if message.owner != user and message.owner not in friends:
+            friends.append(message.owner)
+        if message.recipient != user and message.recipient not in friends:
+            friends.append(message.recipient)
+
+    # return
+    context = {
+        "friends": friends
+    }
+    return flask.jsonify(**context)

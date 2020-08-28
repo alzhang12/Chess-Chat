@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     chat: './chat/js/chat-main.jsx',
     search: './chat/js/main.jsx',
+    profile: './chat/js/profile-main.jsx',
   },
   output: {
     path: path.join(__dirname, '/chat/static/js/'),
