@@ -1,5 +1,5 @@
 import React from 'react';
-import Messages from './messages';
+// import io from 'socket.io-client';
 
 class Chat extends React.Component {
     constructor(props) {
@@ -10,16 +10,23 @@ class Chat extends React.Component {
             messages: [],
         };
 
+        // this.socket = io.connect('http://localhost:5000');
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.checkMessages = this.checkMessages.bind(this);
     } 
 
     componentDidMount() {
+        // this.socket.on('receive', msg => {
+        //     console.log(message);
+        // });
+
         this.newMsg = setInterval(
             () => this.checkMessages(),
             2000
         );
+
         // get the 10 newest messages
         const path = location.pathname;
         const otherUser = path.split('/')[2];
@@ -90,6 +97,10 @@ class Chat extends React.Component {
             recipient: otherUser,
         };
 
+        // // try sockets
+        // console.log(this.socket);
+        // this.socket.emit('message', message);
+
         fetch(endpoint, {
             method: 'POST',
             body: JSON.stringify(postObj),
@@ -104,7 +115,7 @@ class Chat extends React.Component {
             return response.json();
         }).then((data) => {
             // update state
-            console.log(data);
+            // console.log(data);
             this.setState({
                 messages: data.messages,
             });
@@ -129,7 +140,6 @@ class Chat extends React.Component {
                         <hr/>
                     </div>
                 ))}
-                {/* <Messages /> */}
 
                 <div className="chat-input">
                     <form onSubmit={this.handleSubmit}>

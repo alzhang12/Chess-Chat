@@ -141,3 +141,12 @@ h1 {
   padding-left: 20px;
   margin: 30px;
 }
+
+/* Chess Board */
+#chessboard {
+  margin: 20px;
+}
+
+#test {
+  background-color: red;
+}

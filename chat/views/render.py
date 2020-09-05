@@ -131,6 +131,29 @@ def search():
 
 
 """ ------------------------------------------------------------------------ """
+""" --------------------------- Search Page -------------------------------- """
+""" ------------------------------------------------------------------------ """
+@chat.app.route('/chess/', methods=["GET"])
+def chess():
+    """Render chess page."""
+    if 'logged_in_user' not in flask.session:
+        flask.redirect(flask.url_for('show_index'))
+
+    context = {}
+    return flask.render_template("chess.html", **context)
+
+
+""" ------------------------------------------------------------------------ """
+""" -------------------------- New Game Page ------------------------------- """
+""" ------------------------------------------------------------------------ """
+@chat.app.route('/chess/play/', methods=["GET"])
+def play():
+    """Handle game search."""
+    if 'logged_in_user' not in flask.session:
+        flask.redirect(flask.url_for('show_index'))
+
+
+""" ------------------------------------------------------------------------ """
 """ --------------------------- Logout Page -------------------------------- """
 """ ------------------------------------------------------------------------ """
 @chat.app.route('/logout/', methods=["GET", "POST"])
