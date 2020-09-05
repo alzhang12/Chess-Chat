@@ -152,6 +152,8 @@ def play():
     if 'logged_in_user' not in flask.session:
         flask.redirect(flask.url_for('show_index'))
 
+    
+
 
 """ ------------------------------------------------------------------------ """
 """ --------------------------- Logout Page -------------------------------- """

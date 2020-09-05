@@ -29,7 +29,8 @@ class User(db.Model):
     username = db.Column(db.String(), unique=True)
     password = db.Column(db.String())
     game_status = db.Column(db.String())
-
+    other_player = db.Column(db.String(), db.ForeignKey('users_table.username'))
+    
     def __init__(self, username, password):
         """Enter a new user."""
         self.username = username
